@@ -1,3 +1,5 @@
+import messageSchema from '../models/message-schema.js';
+
 // GET Request Handler
 const getAllMessages = (req, res) => {
     try{
@@ -9,7 +11,25 @@ const getAllMessages = (req, res) => {
 
   // POST Request Handler
   const addNewMessage = async (req, res) => {
-    res.status(200).send('Successful API POST Request');
+
+    try {
+        let message = await messageSchema.validate(req.body);
+        // TODO: add message as first element of array and
+        message.id = messages.length;
+        messages.unshift(message);
+        res.status(201).json(message);
+        console.log(messages);
+
+        // respond with '201 Created' Status Code and
+        //the message, as JSON, in the body of the response.
+      } catch (err) {
+          res
+            .status(400)
+            .send('Bad Request. The message in the body of the \
+            Request is either missing or malformed.');
+      }
+
+    //res.status(200).send('Successful API POST Request');
   };
 
   const messages = [
