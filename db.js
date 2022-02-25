@@ -24,3 +24,5 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
 });
+
+import './models/message-schema.js';
