@@ -17,12 +17,12 @@ const getAllMessages = async (req, res) => {
   const addNewMessage = async (req, res) => {
 
     try {
-        let message = await messageSchema.validate(req.body);
+        //let message = await messageSchema.validate(req.body);
         // TODO: add message as first element of array and
-        message.id = messages.length;
-        messages.unshift(message);
+        //message.id = messages.length;
+        //messages.unshift(message);
+        let message = await messageModel.create(req.body);
         res.status(201).json(message);
-        console.log(messages);
 
         // respond with '201 Created' Status Code and
         //the message, as JSON, in the body of the response.
