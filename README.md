@@ -1,4 +1,5 @@
-# Introduction - Message Board (Forum) Application RESTful API
+# Message Board (Forum) Application RESTful API Using NodeJS and Express
+## Introduction
 
 In my Web Services Class at Camosun College we were tasked with implementing a RESTful API for a Message Board Application using Node.js and Express.js.
 Prior to designing and developing the Web Service, we developed a simple front-end application in React.js.
@@ -8,7 +9,7 @@ We will be creating messages, updating them, and deleting them.
 Next.js was used for Static Generation pre-rendering. AJAX calls were made using Axios. 
 A MongoDB NoSQL database was used purely for the purpose of gaining more experience using Mongo and NoSQL databases.
 
-# Technologies
+## Technologies
 
 * Node.js
 * Express.js
