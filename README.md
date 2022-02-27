@@ -1,4 +1,4 @@
-# Message Board (Forum) Application RESTful API Using NodeJS and Express
+# Message Board (Forum) Application RESTful API
 ## Introduction
 
 In my Web Services Class at Camosun College we were tasked with implementing a RESTful API for a Message Board Application using Node.js and Express.js.
