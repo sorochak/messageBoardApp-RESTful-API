@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import argon2 from 'argon2';
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -26,6 +27,18 @@ const userSchema = new mongoose.Schema({
     versionKey: false,
     virtuals: true,
     transform: (doc, ret) => { delete ret._id; }
+  });
+
+  userSchema.pre('save', async function() {
+    // hash and salt password
+    try {
+      const hash = await argon2.hash(this.password, {
+        type: argon2.argon2id
+      });
+      this.password = hash;
+    } catch (err) {
+      console.log('Error in hashing password' + err);
+    }
   });
 
 
