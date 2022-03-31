@@ -4,6 +4,11 @@ import { BasicStrategy } from 'passport-http';
 
 const userModel = mongoose.model('user');
 
+// Login Handler
+const logInUser = (req, res) => {
+  res.status(200).send('Successful API Login Request');
+};
+
 const registerNewUser = async (req, res) => {
     // res.status(200).send('Successful API New User POST Request');
     try {
@@ -54,4 +59,4 @@ const registerNewUser = async (req, res) => {
       });
   } ));
 
-  export { registerNewUser };
+  export { registerNewUser, logInUser };
