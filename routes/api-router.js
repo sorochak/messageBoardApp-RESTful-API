@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import { getAllMessages, addNewMessage, updateMessage } from '../controllers/msg-api-controller.js';
+import { getAllMessages, addNewMessage, updateMessage, deleteMessage } from '../controllers/msg-api-controller.js';
 import { getAllLabs } from '../controllers/exam-api-controller.js';
 import { registerNewUser, logInUser } from '../controllers/user-api-controller.js';
 
@@ -21,5 +21,6 @@ router.route('/labs')
 
 router.route('/messages/:messageId')
 .patch(passport.authenticate('jwt', { session: false }), updateMessage)
+.delete(passport.authenticate('jwt', { session: false }), deleteMessage)
 
 export default router;
