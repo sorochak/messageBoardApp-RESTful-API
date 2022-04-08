@@ -36,6 +36,10 @@ const getAllMessages = async (req, res) => {
     //res.status(200).send('Successful API POST Request');
   };
 
+  const updateMessage = async (req, res) => {
+    res.status(200).send('Successful API Update Message PATCH Request');
+  }
+
 //   const messages = [
 //     {
 //         id: 0,
@@ -69,4 +73,4 @@ const getAllMessages = async (req, res) => {
 //     },
 // ];
 
-  export { getAllMessages, addNewMessage };
+  export { getAllMessages, addNewMessage, updateMessage };
