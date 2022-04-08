@@ -62,6 +62,30 @@ const getAllMessages = async (req, res) => {
     }
   }
 
+  const deleteMessage = async (req, res) => {
+    try {
+      let message = await messageModel.findById(req.params.messageId).exec();
+      if (!message) {
+        // there wasn't an error, but the message wasn't found
+        // i.e. the id given doesn't match any in the database
+        res.sendStatus(404);
+      } else {
+        // message found - is the user authorized?
+        if ( message.name === req.user.username ) {
+          // auth user is owner of message, proceed w/ delete
+          await message.remove();
+          // send back 204 No Content
+          res.sendStatus(204);
+        } else {
+          // auth user is not owner, unauthorized
+          res.sendStatus(401);
+    } }
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(400);
+    }
+  }
+
 //   const messages = [
 //     {
 //         id: 0,
@@ -95,4 +119,4 @@ const getAllMessages = async (req, res) => {
 //     },
 // ];
 
-  export { getAllMessages, addNewMessage, updateMessage };
+  export { getAllMessages, addNewMessage, updateMessage, deleteMessage };
